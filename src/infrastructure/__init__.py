@@ -4,6 +4,8 @@ from .services import ServiceContextService
 from .models import ServiceContext
 from .services import ArtistContextService
 from .models import ArtistContext
+from .services import SongContextService
+from .models import SongContext
 
 __all__ = [
     "setup_sqlalchemy",
@@ -12,5 +14,7 @@ __all__ = [
     "ServiceContextService",
     "ServiceContext",
     "ArtistContextService",
-    "ArtistContext"
+    "ArtistContext",
+    "SongContextService",
+    "SongContext",
 ]
