@@ -7,10 +7,13 @@ class SongContextService:
 		def create_song(self, data):
 			if self.get_song_by_id(data['Id']) is not None:
 					return abort(409, 'A song with the provided ID already exists.')
-			song_context = SongContext(**data)
-			db.session.add(song_context)
-			db.session.commit()
-			return song_context
+			try:
+				song_context = SongContext(**data)
+				db.session.add(song_context)
+				db.session.commit()
+				return song_context
+			except Exception as e:
+				return abort(400, e)
 		
 		def create_songs(self, data_list):
 			created_songs = [db.session.add(SongContext(**data)) for data in data_list]
